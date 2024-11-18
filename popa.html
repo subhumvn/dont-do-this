@@ -1,0 +1,101 @@
+<html>
+<head>
+<title> USTAL)</title>
+<style>
+#chlen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none; 
+  width: 50%; 
+  height: 50%; 
+}
+
+#leftImage, #rightImage {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none; 
+  width: 20%; 
+}
+
+#leftImage {
+  left: 0;
+}
+
+#rightImage {
+  right: 0;
+}
+
+body {
+  background-color: rgba(1, 1, 1, 0.7);
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+  color: #0a5f0d;
+  text-shadow: 0 0 3px #00FF00, 0 0 5px #006600;
+  position: relative;
+  height: 100%;
+}
+
+#image {
+  display: block; 
+}
+</style>
+
+<script>
+var flag = false;
+function playAudio(url) {
+  if (!flag) {
+    var audio = new Audio(url);
+    audio.loop = true;
+    audio.play();
+    flag = true;
+  }
+}
+
+function playVideo() {
+  var videoElement = document.getElementById("chlen");
+  videoElement.style.display = "block"; 
+  var imageElement = document.getElementById("image");
+  imageElement.style.display = "none"; 
+  
+  var leftImage = document.getElementById("leftImage");
+  var rightImage = document.getElementById("rightImage");
+  
+  leftImage.style.display = "block"; 
+  rightImage.style.display = "block"; 
+  
+  videoElement.play(); 
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <div id="chlen">
+    <video autoplay muted loop>
+      <source src="sigma.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div id="image">
+    <img src="123.jpg" width="60%" height="60%">
+  </div>
+  
+  <!-- Left and Right Images -->
+  <div id="leftImage">
+    <img src="1.jpg" width="100%" height="auto">
+  </div>
+  <div id="rightImage">
+    <img src="2.jpg" width="100%" height="auto">
+  </div>
+  
+  <h1 onclick="playAudio('perfect.mp3'); playVideo();">ГЕРБАРИЙ - НОВЫЙ ПАТРИАРХАТ</h1>
+</div>
+</body>
+</html>
